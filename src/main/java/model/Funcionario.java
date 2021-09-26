@@ -124,12 +124,12 @@ public class Funcionario {
         for (Bonus bonusRecebido : bonus) {
             strBonusRecebidos += "\n\t" + bonusRecebido;
         }
-        String strFuncionario = "Funcionario {"
-                + "nome: " + this.nome + ", "
-                + "salarioBase: " + this.salarioBase + ", "
-                + "totalBonus: " + this.calculaTotalBonus() + ", "
-                + "salarioTotal: " + this.getSalarioTotal()
-                + '}';
+        String strFuncionario = "Funcionario {\n\t"
+                + "nome: " + this.nome + ", \n\t"
+                + "cargo: " + this.cargo + ", \n\t"
+                + "salarioBase: " + this.salarioBase + ", \n\t"
+                + "totalBonus: " + this.calculaTotalBonus() + ", \n\t"
+                + "salarioTotal: " + this.getSalarioTotal() + "\n}";
 
         if (bonus.size() > 0) {
             strFuncionario += "\nBonus recebidos: " + strBonusRecebidos;
