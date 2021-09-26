@@ -12,7 +12,7 @@ public class Funcionario {
     private String cargo;
     private final ArrayList<Bonus> bonus;
 
-    public Funcionario(String nome, double salarioBase, String cargo) throws Exception {
+    public Funcionario(String nome, String cargo) throws Exception {
         String exceptions = "";
 
         if (nome == null) {
@@ -22,9 +22,7 @@ public class Funcionario {
         if (cargo == null) {
             exceptions = exceptions.concat("\n#2 Informe um cargo válido");
         }
-        if (salarioBase != 998) {
-            exceptions = exceptions.concat("\n#3 O salário base deve ser R$ 990.00");
-        }
+
         if(!nome.matches("[a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]([a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ])*")){
             exceptions = exceptions.concat("\n#4 O nome possui caracteres inválidos");
         }
@@ -35,7 +33,7 @@ public class Funcionario {
 
         this.nome = nome;
         this.cargo = cargo;
-        this.salarioBase = salarioBase;
+        this.salarioBase = 998.00;
         this.bonus = new ArrayList<>();
     }
 
@@ -62,13 +60,6 @@ public class Funcionario {
 
     public double getSalarioBase() {
         return this.salarioBase;
-    }
-
-    public void setSalarioBase(double salarioBase) throws Exception{
-        if(salarioBase != 998.00) {
-            throw new Exception("\n#3 O salário base deve ser R$ 990.00");
-        }
-        this.salarioBase = salarioBase;
     }
 
     public int getFaltas() {
@@ -105,8 +96,8 @@ public class Funcionario {
         }
     }
 
-    public double getSalario() {
-        return this.calculaSalario();
+    public double getSalarioTotal() {
+        return this.salarioTotal;
     }
 
     private double calculaSalario() {
@@ -137,7 +128,7 @@ public class Funcionario {
                 + "nome: " + this.nome + ", "
                 + "salarioBase: " + this.salarioBase + ", "
                 + "totalBonus: " + this.calculaTotalBonus() + ", "
-                + "salarioTotal: " + this.getSalario()
+                + "salarioTotal: " + this.getSalarioTotal()
                 + '}';
 
         if (bonus.size() > 0) {
