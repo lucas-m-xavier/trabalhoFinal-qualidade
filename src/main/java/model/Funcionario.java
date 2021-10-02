@@ -15,17 +15,18 @@ public class Funcionario {
     public Funcionario(String nome, String cargo) throws Exception {
         String exceptions = "";
 
-        if (nome == null) {
+        if ( nome == null || nome.isEmpty() ) {
             exceptions = exceptions.concat("\n#1 Informe um nome válido");
+        
+        } else if(!nome.matches("[a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]([a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ])*")){
+            exceptions = exceptions.concat("\n#4 O nome possui caracteres inválidos");
         }
 
-        if (cargo == null) {
+        if (cargo == null || cargo.isEmpty() ) {
             exceptions = exceptions.concat("\n#2 Informe um cargo válido");
         }
 
-        if(!nome.matches("[a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]([a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ])*")){
-            exceptions = exceptions.concat("\n#4 O nome possui caracteres inválidos");
-        }
+        
 
         if (exceptions.length() > 0) {
             throw new Exception(exceptions);

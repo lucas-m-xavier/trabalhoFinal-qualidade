@@ -136,12 +136,11 @@ public class MetodoCalculaBonusTest {
     @Test
     public void CT007() throws Exception {
         
-        thrown.expect(Exception.class);
-        thrown.expectMessage(is("\n#3 O salário base deve ser >= R$ 998,00"));
-        
         Funcionario funcionario = new Funcionario("Cléber Machado", "Programador");
         funcionario.setDistanciaMoradia(113);
         funcionario.setFaltas(1);
+        
+        assertEquals(salarioMinimo, funcionario.getSalarioBase(), 0.001);
     }
     
     @Test
