@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+trabalhoFinal,bonusfuncionario,ProcessadoraBonus,0,45,0,2,0,10,0,3,0,2
+trabalhoFinal,bonusfuncionario,MetodoCalculaBonusDistancia,7,35,1,5,1,9,1,4,0,2
+trabalhoFinal,bonusfuncionario,MetodoCalculoBonusCargo,0,54,1,5,0,10,1,5,0,3
+trabalhoFinal,bonusfuncionario,MetodoCalculaBonusFalta,12,38,3,3,2,9,2,4,0,3
+trabalhoFinal,model,Funcionario,25,157,8,18,5,45,7,21,2,13
+trabalhoFinal,model,Bonus,9,12,0,0,2,5,2,2,2,2
+trabalhoFinal,exceptions,ModelException,0,9,0,0,0,4,0,2,0,2

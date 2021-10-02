@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ufes.trabalhoFInal</groupId>
+    <groupId>ufes.trabalhoFinal</groupId>
     <artifactId>trabalhoFinal</artifactId>
     <version>1.0</version>
 
@@ -13,6 +13,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <sonar.organization>lucas-m-xavier</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <dependencies>
@@ -41,7 +42,22 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.8-SNAPSHOT</version>
+                <version>0.8.5</version>
+                <executions>
+			<execution>
+				<id>prepare-agent</id>
+				<goals>
+					<goal>prepare-agent</goal>
+				</goals>
+			</execution>
+			<execution>
+				<id>report</id>
+				<phase>prepare-package</phase>
+				<goals>
+					<goal>report</goal>
+				</goals>
+			</execution>
+		</executions>
             </plugin>
         </plugins>
     </build>
