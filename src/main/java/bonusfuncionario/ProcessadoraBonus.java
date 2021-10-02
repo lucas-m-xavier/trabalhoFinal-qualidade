@@ -1,4 +1,4 @@
-package bonusFuncionario;
+package bonusfuncionario;
 
 import model.Funcionario;
 

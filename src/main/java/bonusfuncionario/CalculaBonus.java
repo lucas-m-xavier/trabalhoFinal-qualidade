@@ -1,8 +1,8 @@
-package bonusFuncionario;
+package bonusfuncionario;
 
 import model.Funcionario;
 
-interface IMetodoCalculaBonus {
+interface CalculaBonus {
 
     public void calcular(Funcionario funcionario);
 
