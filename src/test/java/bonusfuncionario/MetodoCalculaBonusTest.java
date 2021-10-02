@@ -193,13 +193,30 @@ public class MetodoCalculaBonusTest {
 
         Funcionario funcionario = new Funcionario("Cláudio Adão", "Supervisor");
 
+        funcionario.setFaltas(8);
+        funcionario.setDistanciaMoradia(23);
+
+        ProcessadoraBonus pb = new ProcessadoraBonus();
+        pb.processar(funcionario);
+
+        double salarioEsperado = SALARIO_MINIMO * 1.01 + BONUS_SUPERVISOR;
+
+        assertEquals(salarioEsperado, funcionario.getSalarioTotal(), 0.001);
+    }
+    
+    @Test
+    @Description("Teste de bônus: Variação de cenários")
+    public void CT012() throws Exception {
+
+        Funcionario funcionario = new Funcionario("Carlos Mendes", "Programador Web");
+
         funcionario.setFaltas(3);
         funcionario.setDistanciaMoradia(23);
 
         ProcessadoraBonus pb = new ProcessadoraBonus();
         pb.processar(funcionario);
 
-        double salarioEsperado = SALARIO_MINIMO * 1.02 + BONUS_SUPERVISOR;
+        double salarioEsperado = SALARIO_MINIMO * 1.02 + BONUS_PROGRAMADOR;
 
         assertEquals(salarioEsperado, funcionario.getSalarioTotal(), 0.001);
     }
