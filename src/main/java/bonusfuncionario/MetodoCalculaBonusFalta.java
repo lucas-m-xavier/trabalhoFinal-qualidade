@@ -6,19 +6,19 @@ import model.Funcionario;
 class MetodoCalculaBonusFalta implements IMetodoCalculaBonus {
 
     //Constante
-    private static String falta = "Falta: ";
+    private static String FALTA = "Falta: ";
     
     @Override
     public void calcular(Funcionario funcionario) {
-        int faltas = funcionario.getFaltas();
-        double salario = funcionario.getSalarioBase();
+        int faltasFuncionario = funcionario.getFaltas();
+        double salarioFuncionario = funcionario.getSalarioBase();
 
-        if (faltas == 0) {
-            funcionario.addBonus(new Bonus(falta, salario * 0.05));
-        } else if (faltas < 5) {
-            funcionario.addBonus(new Bonus(falta, salario * 0.02));
-        } else if (faltas < 10) {
-            funcionario.addBonus(new Bonus(falta, salario * 0.01));
+        if (faltasFuncionario == 0) {
+            funcionario.addBonus(new Bonus(FALTA, salarioFuncionario * 0.05));
+        } else if (faltasFuncionario < 5) {
+            funcionario.addBonus(new Bonus(FALTA, salarioFuncionario * 0.02));
+        } else if (faltasFuncionario < 10) {
+            funcionario.addBonus(new Bonus(FALTA, salarioFuncionario * 0.01));
         }
     }
 }

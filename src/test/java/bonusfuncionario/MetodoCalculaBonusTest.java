@@ -47,10 +47,10 @@ public class MetodoCalculaBonusTest {
     public ExpectedException thrown = ExpectedException.none();
     
     //Constantes
-    private static double salarioMinimo = 998;
-    private static double bonusProgramador = 50;
-    private static double bonusSupervisor = 80;
-    private static double bonusGerente = 100;
+    private static double SALARIO_MINIMO = 998;
+    private static double BONUS_PROGRAMADOR = 50;
+    private static double BONUS_SUPERVISOR = 80;
+    private static double BONUS_GERENTE = 100;
 
     @Test
     public void CT001() throws Exception {
@@ -70,7 +70,7 @@ public class MetodoCalculaBonusTest {
         ProcessadoraBonus pb = new ProcessadoraBonus();
         pb.processar(funcionario);
 
-        double salarioEsperado = salarioMinimo * 1.02 + bonusGerente;
+        double salarioEsperado = SALARIO_MINIMO * 1.02 + BONUS_GERENTE;
 
         assertEquals(salarioEsperado, funcionario.getSalarioTotal(), 0.001);
     }
@@ -85,45 +85,14 @@ public class MetodoCalculaBonusTest {
         ProcessadoraBonus pb = new ProcessadoraBonus();
         pb.processar(funcionario);
 
-        double salarioEsperado = salarioMinimo * 1.02 + bonusGerente + 300;
+        double salarioEsperado = SALARIO_MINIMO * 1.02 + BONUS_GERENTE + 300;
 
         assertEquals(salarioEsperado, funcionario.getSalarioTotal(), 0.001);
     }
-
+    
+    
     @Test
     public void CT004() throws Exception {
-        Funcionario funcionario = new Funcionario("Fulano", "Gerente");
-
-        funcionario.setFaltas(2);
-        funcionario.setDistanciaMoradia(151);
-
-        ProcessadoraBonus pb = new ProcessadoraBonus();
-        pb.processar(funcionario);
-
-        double salarioEsperado = salarioMinimo * 1.02 + bonusGerente + 500;
-
-        assertEquals(salarioEsperado, funcionario.getSalarioTotal(), 0.001);
-    }
-    
-     @Test
-    public void CT005() throws Exception {
-        Funcionario funcionario = new Funcionario("Fulano", "Gerente");
-
-        funcionario.setFaltas(2);
-        funcionario.setDistanciaMoradia(51);
-
-        ProcessadoraBonus pb = new ProcessadoraBonus();
-        pb.processar(funcionario);
-
-        double salarioEsperado = salarioMinimo * 1.02 + bonusGerente + 150;
-        
-        assertEquals(salarioEsperado, funcionario.getSalarioTotal(), 0.001);
-    }
-    
-    
-    //Novos testes, segundo a planilha
-    @Test
-    public void CT006() throws Exception {
         
         thrown.expect(ModelException.class);
         thrown.expectMessage(is("\n#1 Informe um nome válido"));
@@ -135,17 +104,17 @@ public class MetodoCalculaBonusTest {
     
     
     @Test
-    public void CT007() throws Exception {
+    public void CT005() throws Exception {
         
         Funcionario funcionario = new Funcionario("Cléber Machado", "Programador");
         funcionario.setDistanciaMoradia(113);
         funcionario.setFaltas(1);
         
-        assertEquals(salarioMinimo, funcionario.getSalarioBase(), 0.001);
+        assertEquals(SALARIO_MINIMO, funcionario.getSalarioBase(), 0.001);
     }
     
     @Test
-    public void CT008() throws Exception {
+    public void CT006() throws Exception {
         
         thrown.expect(ModelException.class);
         thrown.expectMessage(is("\n#2 Informe um cargo válido"));
@@ -156,7 +125,7 @@ public class MetodoCalculaBonusTest {
     }
     
     @Test
-    public void CT009() throws Exception {
+    public void CT007() throws Exception {
         Funcionario funcionario = new Funcionario("Alexandre", "Programador");
         funcionario.setDistanciaMoradia(239);
         funcionario.setFaltas(0);
@@ -164,13 +133,13 @@ public class MetodoCalculaBonusTest {
         ProcessadoraBonus pb = new ProcessadoraBonus();
         pb.processar(funcionario);
 
-        double salarioEsperado = salarioMinimo * 1.05 + bonusProgramador + 500;
+        double salarioEsperado = SALARIO_MINIMO * 1.05 + BONUS_PROGRAMADOR + 500;
 
         assertEquals(salarioEsperado, funcionario.getSalarioTotal(), 0.001);
     }
     
     @Test
-    public void CT010() throws Exception {
+    public void CT008() throws Exception {
         thrown.expect(ModelException.class);
         thrown.expectMessage(is("\n#5 A distância é inválida"));
 
@@ -179,7 +148,7 @@ public class MetodoCalculaBonusTest {
     }
 
     @Test
-    public void CT011() throws Exception {
+    public void CT009() throws Exception {
         thrown.expect(ModelException.class);
         thrown.expectMessage(is("\n#6 O total de faltas é inválido"));
 
@@ -189,7 +158,7 @@ public class MetodoCalculaBonusTest {
     }
 
     @Test
-    public void CT012() throws Exception {
+    public void CT010() throws Exception {
         thrown.expect(ModelException.class);
         thrown.expectMessage(is("\n#4 O nome possui caracteres inválidos"));
 
@@ -198,7 +167,7 @@ public class MetodoCalculaBonusTest {
     }
 
     @Test
-    public void CT013() throws Exception {
+    public void CT011() throws Exception {
 
         Funcionario funcionario = new Funcionario("Cláudio Adão", "Supervisor");
 
@@ -208,7 +177,7 @@ public class MetodoCalculaBonusTest {
         ProcessadoraBonus pb = new ProcessadoraBonus();
         pb.processar(funcionario);
 
-        double salarioEsperado = salarioMinimo * 1.02 + bonusSupervisor;
+        double salarioEsperado = SALARIO_MINIMO * 1.02 + BONUS_SUPERVISOR;
 
         assertEquals(salarioEsperado, funcionario.getSalarioTotal(), 0.001);
     }

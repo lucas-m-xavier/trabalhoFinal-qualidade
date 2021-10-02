@@ -37,7 +37,7 @@ public class Funcionario {
         return nome;
     }
 
-    public void setNome(String nome) throws Exception {
+    public void setNome(String nome) throws ModelException {
         StringBuilder exceptions = new StringBuilder();
         
         if ( nome == null || nome.isEmpty() ) {
@@ -62,7 +62,7 @@ public class Funcionario {
         return faltas;
     }
 
-    public void setFaltas(int faltas) throws Exception{
+    public void setFaltas(int faltas) throws ModelException{
         if(faltas < 0){
             throw new ModelException("\n#6 O total de faltas é inválido");
         }
@@ -73,7 +73,7 @@ public class Funcionario {
         return distanciaMoradia;
     }
 
-    public void setDistanciaMoradia(int distanciaMoradia) throws Exception{
+    public void setDistanciaMoradia(int distanciaMoradia) throws ModelException{
         if(distanciaMoradia < 0){
             throw new ModelException("\n#5 A distância é inválida");
         }
@@ -84,7 +84,7 @@ public class Funcionario {
         return cargo;
     }
 
-    public void setCargo(String cargo) throws Exception {
+    public void setCargo(String cargo) throws ModelException {
         if (cargo.contains("PROGRAMADOR") || cargo.contains("GERENTE") ||cargo.contains("SUPERVISOR")) {
             this.cargo = cargo;
         }else {

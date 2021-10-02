@@ -11,7 +11,7 @@ package exceptions;
  */
 public class ModelException extends RuntimeException{
     
-    private String messageError;
+    private final String messageError;
     
     public ModelException(String messageError){
         super();
