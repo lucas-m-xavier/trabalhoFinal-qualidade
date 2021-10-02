@@ -85,11 +85,7 @@ public class Funcionario {
     }
 
     public void setCargo(String cargo) throws ModelException {
-        if (cargo.contains("PROGRAMADOR") || cargo.contains("GERENTE") ||cargo.contains("SUPERVISOR")) {
-            this.cargo = cargo;
-        }else {
-            throw new ModelException("\n#2 Informe um cargo válido");
-        }
+        this.cargo = cargo;
     }
 
     public double getSalarioTotal() {
