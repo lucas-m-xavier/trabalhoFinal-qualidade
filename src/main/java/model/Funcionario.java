@@ -97,6 +97,7 @@ public class Funcionario {
     }
 
     public double getSalarioTotal() {
+        this.calculaSalario();
         return this.salarioTotal;
     }
 

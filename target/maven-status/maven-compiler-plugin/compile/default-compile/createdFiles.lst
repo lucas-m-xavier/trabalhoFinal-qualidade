@@ -1,0 +1,9 @@
+bonusFuncionario/ProcessadoraBonus.class
+Main.class
+bonusFuncionario/IMetodoCalculaBonus.class
+bonusFuncionario/MetodoCalculaBonusFalta.class
+bonusFuncionario/CalculaBonus.class
+bonusFuncionario/MetodoCalculaBonusDistancia.class
+model/Bonus.class
+model/Funcionario.class
+bonusFuncionario/MetodoCalculoBonusCargo.class
