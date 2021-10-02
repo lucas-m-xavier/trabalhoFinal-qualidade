@@ -15,9 +15,9 @@ class MetodoCalculaBonusFalta implements IMetodoCalculaBonus {
 
         if (faltasFuncionario == 0) {
             funcionario.addBonus(new Bonus(falta, salarioFuncionario * 0.05));
-        } else if (faltasFuncionario < 5) {
+        } else if (faltasFuncionario <= 5) {
             funcionario.addBonus(new Bonus(falta, salarioFuncionario * 0.02));
-        } else if (faltasFuncionario < 10) {
+        } else if (faltasFuncionario <= 10) {
             funcionario.addBonus(new Bonus(falta, salarioFuncionario * 0.01));
         }
     }
