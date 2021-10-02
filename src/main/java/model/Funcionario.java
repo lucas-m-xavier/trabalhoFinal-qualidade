@@ -1,5 +1,6 @@
 package model;
 
+import exceptions.ModelException;
 import java.util.ArrayList;
 
 public class Funcionario {
@@ -11,18 +12,19 @@ public class Funcionario {
     private int faltas;
     private String cargo;
     private final ArrayList<Bonus> bonus;
-
+    private static String nomeMatch = "[a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]([a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ])*";
+    
     public Funcionario(String nome, String cargo) throws Exception {
-        String exceptions = "";
+        StringBuilder exceptions = new StringBuilder();
 
         this.setNome(nome);
 
         if (cargo == null || cargo.isEmpty() ) {
-            exceptions = exceptions.concat("\n#2 Informe um cargo válido");
+            exceptions.append("\n#2 Informe um cargo válido");
         }
 
         if (exceptions.length() > 0) {
-            throw new Exception(exceptions);
+            throw new ModelException(exceptions.toString());
         }
 
         this.nome = nome;
@@ -36,17 +38,17 @@ public class Funcionario {
     }
 
     public void setNome(String nome) throws Exception {
-        String exceptions = "";
+        StringBuilder exceptions = new StringBuilder();
         
         if ( nome == null || nome.isEmpty() ) {
-            exceptions = exceptions.concat("\n#1 Informe um nome válido");
+            exceptions.append("\n#1 Informe um nome válido");
         
-        } else if(!nome.matches("[a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]([a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ])*")){
-            exceptions = exceptions.concat("\n#4 O nome possui caracteres inválidos");
+        } else if(!nome.matches(nomeMatch)){
+            exceptions.append("\n#4 O nome possui caracteres inválidos");
         }
 
         if (exceptions.length() > 0) {
-            throw new Exception(exceptions);
+            throw new ModelException(exceptions.toString());
         }
 
         this.nome = nome;
@@ -62,7 +64,7 @@ public class Funcionario {
 
     public void setFaltas(int faltas) throws Exception{
         if(faltas < 0){
-            throw new Exception("\n#6 O total de faltas é inválido");
+            throw new ModelException("\n#6 O total de faltas é inválido");
         }
         this.faltas = faltas;
     }
@@ -73,7 +75,7 @@ public class Funcionario {
 
     public void setDistanciaMoradia(int distanciaMoradia) throws Exception{
         if(distanciaMoradia < 0){
-            throw new Exception("\n#5 A distância é inválida");
+            throw new ModelException("\n#5 A distância é inválida");
         }
         this.distanciaMoradia = distanciaMoradia;
     }
@@ -86,7 +88,7 @@ public class Funcionario {
         if (cargo.contains("PROGRAMADOR") || cargo.contains("GERENTE") ||cargo.contains("SUPERVISOR")) {
             this.cargo = cargo;
         }else {
-            throw new Exception("\n#2 Informe um cargo válido");
+            throw new ModelException("\n#2 Informe um cargo válido");
         }
     }
 
@@ -106,30 +108,11 @@ public class Funcionario {
 
     public double calculaTotalBonus() {
         double totalBonus = 0;
-        for (Bonus bonus : bonus) {
-            totalBonus += bonus.getValor();
+        for (Bonus bonusFuncionario : bonus) {
+            totalBonus += bonusFuncionario.getValor();
         }
 
         return totalBonus;
     }
-
-    @Override
-    public String toString() {
-        String strBonusRecebidos = "";
-        for (Bonus bonusRecebido : bonus) {
-            strBonusRecebidos += "\n\t" + bonusRecebido;
-        }
-        String strFuncionario = "Funcionario {\n\t"
-                + "nome: " + this.nome + ", \n\t"
-                + "cargo: " + this.cargo + ", \n\t"
-                + "salarioBase: " + this.salarioBase + ", \n\t"
-                + "totalBonus: " + this.calculaTotalBonus() + ", \n\t"
-                + "salarioTotal: " + this.getSalarioTotal() + "\n}";
-
-        if (bonus.size() > 0) {
-            strFuncionario += "\nBonus recebidos: " + strBonusRecebidos;
-        }
-
-        return strFuncionario;
-    }
+    
 }

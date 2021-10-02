@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bonusFuncionario;
+package bonusfuncionario;
 
+import exceptions.ModelException;
 import model.Funcionario;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
@@ -124,7 +125,7 @@ public class MetodoCalculaBonusTest {
     @Test
     public void CT006() throws Exception {
         
-        thrown.expect(Exception.class);
+        thrown.expect(ModelException.class);
         thrown.expectMessage(is("\n#1 Informe um nome válido"));
         
         Funcionario funcionario = new Funcionario(null, "Supervisor");
@@ -146,7 +147,7 @@ public class MetodoCalculaBonusTest {
     @Test
     public void CT008() throws Exception {
         
-        thrown.expect(Exception.class);
+        thrown.expect(ModelException.class);
         thrown.expectMessage(is("\n#2 Informe um cargo válido"));
         
         Funcionario funcionario = new Funcionario("Andre Heinning", null);
@@ -170,7 +171,7 @@ public class MetodoCalculaBonusTest {
     
     @Test
     public void CT010() throws Exception {
-        thrown.expect(Exception.class);
+        thrown.expect(ModelException.class);
         thrown.expectMessage(is("\n#5 A distância é inválida"));
 
         Funcionario funcionario = new Funcionario("Clovis", "PROGRAMADOR");
@@ -179,7 +180,7 @@ public class MetodoCalculaBonusTest {
 
     @Test
     public void CT011() throws Exception {
-        thrown.expect(Exception.class);
+        thrown.expect(ModelException.class);
         thrown.expectMessage(is("\n#6 O total de faltas é inválido"));
 
         Funcionario funcionario = new Funcionario("Alfredo", "PROGRAMADOR");
@@ -189,7 +190,7 @@ public class MetodoCalculaBonusTest {
 
     @Test
     public void CT012() throws Exception {
-        thrown.expect(Exception.class);
+        thrown.expect(ModelException.class);
         thrown.expectMessage(is("\n#4 O nome possui caracteres inválidos"));
 
         Funcionario funcionario = new Funcionario("Alexandre77", "Gerente");
