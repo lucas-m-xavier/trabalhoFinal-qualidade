@@ -14,7 +14,7 @@ public class Funcionario {
     private final ArrayList<Bonus> bonus;
     private static String nomeMatch = "[a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ]([a-zA-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ])*";
     
-    public Funcionario(String nome, String cargo) throws Exception {
+    public Funcionario(String nome, String cargo) throws ModelException {
         StringBuilder exceptions = new StringBuilder();
 
         this.setNome(nome);
