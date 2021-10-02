@@ -6,18 +6,18 @@ import model.Funcionario;
 public class MetodoCalculoBonusCargo implements IMetodoCalculaBonus {
 
     //Constante
-    private static String cargo = "Cargo: ";
+    private static String CARGO = "Cargo: ";
     
     @Override
     public void calcular(Funcionario funcionario) {
-        String cargo = funcionario.getCargo();
+        String cargoFuncionario = funcionario.getCargo();
 
-        if (cargo.toUpperCase().contains("GERENTE")) {
-            funcionario.addBonus(new Bonus(cargo + cargo, 100));
-        } else if (cargo.toUpperCase().contains("SUPERVISOR")) {
-            funcionario.addBonus(new Bonus(cargo + cargo, 80));
-        } else if (cargo.toUpperCase().contains("PROGRAMADOR")) {
-            funcionario.addBonus(new Bonus(cargo + cargo, 50));
+        if (cargoFuncionario.toUpperCase().contains("GERENTE")) {
+            funcionario.addBonus(new Bonus(CARGO + cargoFuncionario, 100));
+        } else if (cargoFuncionario.toUpperCase().contains("SUPERVISOR")) {
+            funcionario.addBonus(new Bonus(CARGO + cargoFuncionario, 80));
+        } else if (cargoFuncionario.toUpperCase().contains("PROGRAMADOR")) {
+            funcionario.addBonus(new Bonus(CARGO + cargoFuncionario, 50));
         }
     }
 }
